@@ -1,0 +1,32 @@
+.Add-itemForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 5px 20px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  width: 100%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.Add-itemForm input {
+  font-size: 20px;
+  padding: 10px;
+  border: none;
+  background: white;
+  display: block;
+  border-radius: 5px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.616);
+  width: 300px;
+}
+
+.add-item-area {
+  border-radius: 5px;
+  background: darkmagenta;
+  padding: 20px;
+}
+/*# sourceMappingURL=AddItem.css.map */

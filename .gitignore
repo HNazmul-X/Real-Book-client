@@ -4,6 +4,12 @@
 /node_modules
 /.pnp
 .pnp.js
+#sass file ignoring
+.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map
+*.scss
 
 # testing
 /coverage
@@ -17,6 +23,7 @@
 .env.development.local
 .env.test.local
 .env.production.local
+
 
 npm-debug.log*
 yarn-debug.log*
