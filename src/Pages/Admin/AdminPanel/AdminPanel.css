@@ -1,7 +1,6 @@
 .admin-panel-list {
-  background: #1a0014;
+  background: #000833;
   height: 100vh;
-  color: #610c48;
   overflow: hidden;
   overflow-y: auto;
 }
@@ -15,16 +14,22 @@
   padding: 10px 20px;
   text-align: center;
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.116);
-  margin: 10px auto;
+  border-bottom: 1px solid rgba(187, 187, 187, 0.384);
 }
 
-.admin-panel-list ul .admin-panel-listItem:focus {
-  background: purple !important;
+.admin-panel-list ul .admin-panel-listItem:hover {
+  background: rgba(255, 255, 255, 0.116);
 }
 
 .admin-panel-list ul .admin-panel-listItem h5 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   color: white;
+}
+
+.admin-panel-list ul .admin-panel-listItem h5 .icon {
+  margin-right: 10px;
 }
 
 .admin-panel-item {

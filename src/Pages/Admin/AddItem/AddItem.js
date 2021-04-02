@@ -11,7 +11,7 @@ const AddItem = () => {
         const productData = {...data}
         productData.imageURL = imageURL
 
-        imageURL && axios.post("http://localhost:5000/add-books", productData)
+        imageURL && axios.post("https://real-page.herokuapp.com/add-books", productData)
         .then(res=> console.log(res))
         .catch(err => console.log(err))
     };

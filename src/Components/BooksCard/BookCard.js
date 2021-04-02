@@ -1,50 +1,57 @@
 import React from "react";
-import cx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import CardMedia from "@material-ui/core/CardMedia";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import TextInfoContent from "@mui-treasury/components/content/textInfo";
-import { useFourThreeCardMediaStyles } from "@mui-treasury/styles/cardMedia/fourThree";
-import { useN04TextInfoContentStyles } from "@mui-treasury/styles/textInfoContent/n04";
-import { useOverShadowStyles } from "@mui-treasury/styles/shadow/over";
-import { Button } from "@material-ui/core";
+import CardMedia from "@material-ui/core/CardMedia";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
+import { Box, Grid } from "@material-ui/core";
+import { useHistory } from "react-router";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles({
     root: {
-        maxWidth: "100%",
-        borderRadius: 12,
-        padding: 12,
+        width: '345px',
     },
-    media: {
-        borderRadius: 6,
-    },
-    
-}));
+});
 
-export const BookCard = React.memo(function BookCardFn({book}) {
-    const styles = useStyles();
-    const mediaStyles = useFourThreeCardMediaStyles();
-    const textCardContentStyles = useN04TextInfoContentStyles();
-    const shadowStyles = useOverShadowStyles({ inactive: true });
-    const {name, price, Name, imageURL, id} = book
-    console.log(name)
 
-    console.log(book)
+
+export const BookCard = React.memo(function BookCardFn({ book }) {
+    const classes = useStyles();
+    const { name, price, Name, imageURL, _id } = book;
+    const history = useHistory()
+
+    console.log(book);
     return (
-        <Card className={cx(styles.root, shadowStyles.root)}>
-            <CardMedia className={cx(styles.media, mediaStyles.root)} image={imageURL} />
-            <CardContent>
-                <TextInfoContent classes={textCardContentStyles} /* overline={"Kesha"} heading={"Inner Varnika"} */  heading={Name|| name}  />
-                <div className="text-center">
-                    <Button className={cx(styles.button)} variant="contained" color="secondary">
-                        <span> Buy Now</span>
-                        <AddShoppingCartIcon />
-                    </Button>
-                </div>
-            </CardContent>
-        </Card>
+        <Box px={3} mt={3}>
+            <Card elevation="5" className={classes.root}>
+                <CardActionArea>
+                    <CardMedia component="img" alt="Contemplative Reptile" height="200" image={imageURL} title="Contemplative Reptile" />
+                    <CardContent>
+                        <Typography align="center" gutterBottom variant="h5" component="h2">
+                            {name}
+                        </Typography>
+                    </CardContent>
+                </CardActionArea>
+                <CardActions>
+                    <Grid container>
+                        <Grid item sm="6">
+                            <Typography variant="h6" component="h5" >
+                                Price:${price}
+                            </Typography>
+                        </Grid>
+                        <Grid item sm="6">
+                            <Button onClick={()=> history.push(`/check-out/${_id}`)} style={{width:"100%"}} variant="contained" size="small" color="primary">
+                               <AddShoppingCartIcon/> Buy Now
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </CardActions>
+            </Card>
+        </Box>
     );
 });
 export default BookCard;

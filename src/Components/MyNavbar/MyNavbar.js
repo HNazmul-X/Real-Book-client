@@ -32,8 +32,8 @@ export default function MyNavbar() {
                     </Typography>
                     <Button onClick={()=> history.push("/")} pt="4" color="inherit">Home</Button>
                     <Button onClick={()=> history.push("/admin")} pt="4" color="inherit">Admin</Button>
-                    <Button pt="4" color="inherit">Orders</Button>
-                    <Button pt="4" color="inherit">Login</Button>
+                    <Button onClick={()=> history.push("/order")} pt="4" color="inherit">Orders</Button>
+                    <Button onClick={()=> history.push("/login")}pt="4" color="inherit">Login</Button>
                 </Toolbar>
             </AppBar>
         </div>

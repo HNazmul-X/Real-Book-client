@@ -16,13 +16,13 @@ const AdminPanel = () => {
             <Grid className="admin-panel-list" item md={3}>
                <ul className="">
                    <li className="admin-panel-listItem">
-                       <h5 onClick={()=> setAdminView("manage-product")} ><AppsIcon/>Manage Products</h5>
+                       <h5 onClick={()=> setAdminView("manage-product")} ><AppsIcon className="icon"/>Manage Products</h5>
                    </li>
                    <li className="admin-panel-listItem">
-                       <h5 onClick={()=> setAdminView("add-product")} ><AddCircleTwoToneIcon/>Add Products</h5>
+                       <h5 onClick={()=> setAdminView("add-product")} ><AddCircleTwoToneIcon className="icon"/>Add Products</h5>
                    </li>
                    <li className="admin-panel-listItem">
-                       <h5 onClick={()=> setAdminView("edit-product")} > <EditIcon/>Edit Products</h5>
+                       <h5 onClick={()=> setAdminView("edit-product")} > <EditIcon className="icon"/>Edit Products</h5>
                    </li>
                </ul>
             </Grid>

@@ -1,0 +1,52 @@
+.order-table {
+  margin-top: 20px;
+  width: 90%;
+  margin: auto;
+}
+
+.order-table table {
+  width: 100%;
+  border: none;
+  border-collapse: separate;
+  border-spacing: 0 1em;
+}
+
+.order-table table thead {
+  background: #171515;
+}
+
+.order-table table thead tr th {
+  padding: 10px;
+  color: white;
+}
+
+.order-table table tbody tr {
+  text-align: center;
+  margin-top: 20px !important;
+}
+
+.order-table table tbody tr td {
+  background: grey;
+  margin-top: 10px;
+  font-weight: 700;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.order-table table tbody tr td:first-child {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.order-table table tbody tr td:last-child {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.order-table table tbody tr td.book-image img {
+  width: 100px;
+  height: 120px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+/*# sourceMappingURL=Order.css.map */

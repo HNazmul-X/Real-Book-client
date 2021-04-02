@@ -1,0 +1,26 @@
+.login-btn {
+  font-weight: 600;
+}
+
+.login-btn .icon {
+  font-size: 40px;
+  margin-right: 10px;
+}
+
+.login-btn.google {
+  background: #4285F4;
+  margin: 10px;
+}
+
+.login-btn.github {
+  background: #171515;
+  color: white;
+  margin: 10px;
+}
+
+.login-btn.facebook {
+  margin: 10px;
+  background: #3b5998;
+  color: white;
+}
+/*# sourceMappingURL=logn.css.map */

@@ -12,6 +12,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import axios from "axios";
 import { IconButton } from "@material-ui/core";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles({
     table: {
@@ -24,18 +25,26 @@ const useStyles = makeStyles({
 export default function ManageItem() {
     const classes = useStyles();
     const [books, setBooks] = useState([])
+    const [isSpinnerShow, setIsSpinnerShow] = useState(true)
 
-    
+    useEffect(() => {
+        axios.get("https://real-page.herokuapp.com/books").then((res) => {
+            setBooks(res.data)
+             setIsSpinnerShow(false);
+        });
+    }, []);
 
 
     const deleteItemFromDb = (id) => {
         console.log(id)
-        fetch(`http://localhost:5000/delete-book/${id}`, {
+        fetch(`https://real-page.herokuapp.com/delete-book/${id}`, {
             method: "DELETE",
         })
             .then((res) => res.json())
             .then((data) => {
-                axios.get("http://localhost:5000/books").then((res) => setBooks(res.data));
+                axios.get("https://real-page.herokuapp.com/books").then((res) => {
+                    setBooks(res.data);
+                });
                 
             })
             .catch((err) => console.log(err));
@@ -45,29 +54,45 @@ export default function ManageItem() {
 
 
     return (
-        <TableContainer component={Paper}>
-            <Table className={classes.table} aria-label="simple table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell>Books Name</TableCell>
-                        <TableCell align="right">Price</TableCell>
-                        <TableCell align="right">Catagory</TableCell>
-                        <TableCell align="right">Edit</TableCell>
-                        <TableCell align="right">Delete</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {books.map((book) => (
-                        <TableRow key={book.Name}>
-                            <TableCell component="th" scope="row">{book.Name || book.name} </TableCell>
-                            <TableCell align="right">{book.Price || book.price}</TableCell>
-                            <TableCell align="right">{book.Catagory || book.catagory}</TableCell>
-                            <TableCell align="right"> <IconButton><EditIcon/></IconButton> </TableCell>
-                            <TableCell align="right"><IconButton onClick={()=> deleteItemFromDb(book?._id)}><DeleteIcon/></IconButton></TableCell>
-                        </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
+        <>
+            {isSpinnerShow && <CircularProgress />}
+            {!isSpinnerShow && (
+                <TableContainer component={Paper}>
+                    <Table className={classes.table} aria-label="simple table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Books Name</TableCell>
+                                <TableCell align="right">Price</TableCell>
+                                <TableCell align="right">Catagory</TableCell>
+                                <TableCell align="right">Edit</TableCell>
+                                <TableCell align="right">Delete</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {books.map((book) => (
+                                <TableRow key={book.Name}>
+                                    <TableCell component="th" scope="row">
+                                        {book.Name || book.name}{" "}
+                                    </TableCell>
+                                    <TableCell align="right">{book.Price || book.price}</TableCell>
+                                    <TableCell align="right">{book.Catagory || book.catagory}</TableCell>
+                                    <TableCell align="right">
+                                        {" "}
+                                        <IconButton>
+                                            <EditIcon />
+                                        </IconButton>{" "}
+                                    </TableCell>
+                                    <TableCell align="right">
+                                        <IconButton onClick={() => deleteItemFromDb(book?._id)}>
+                                            <DeleteIcon />
+                                        </IconButton>
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+            )}
+        </>
     );
 }
