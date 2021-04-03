@@ -2,6 +2,7 @@ import { Box, Container, Grid } from '@material-ui/core';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import BookCard from '../../Components/BooksCard/BookCard';
+import MyNavbar from '../../Components/MyNavbar/MyNavbar';
 import spinnerImg from "../../images/spinner.gif"
 
 const Home = () => {
@@ -16,6 +17,9 @@ const Home = () => {
         });
     },[])
     return (
+        <>
+        
+                  <MyNavbar/>
         <div>
             {isSpinnerShow && (
                 <Box width="400px" mx="auto">
@@ -36,6 +40,8 @@ const Home = () => {
                 </Grid>
             </Container>
         </div>
+
+        </>
     );
 };
 

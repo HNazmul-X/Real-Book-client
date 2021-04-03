@@ -7,10 +7,13 @@ import ManageItem from '../ManageItem/ManageItem';
 import EditIcon from "@material-ui/icons/Edit";
 import AddCircleTwoToneIcon from "@material-ui/icons/AddCircleTwoTone";
 import AppsIcon from "@material-ui/icons/Apps";
+import HomeIcon from "@material-ui/icons/Home";
 import "./AdminPanel.css"
+import { useHistory } from 'react-router';
 
 const AdminPanel = () => {
     const [adminView , setAdminView] = useState("")
+    const history = useHistory()
     return (
         <Grid container>
             <Grid className="admin-panel-list" item md={3}>
@@ -23,6 +26,9 @@ const AdminPanel = () => {
                    </li>
                    <li className="admin-panel-listItem">
                        <h5 onClick={()=> setAdminView("edit-product")} > <EditIcon className="icon"/>Edit Products</h5>
+                   </li>
+                   <li className="admin-panel-listItem">
+                       <h5 onClick={()=> history.push("/")} > <HomeIcon className="icon"/>Goto Home Page</h5>
                    </li>
                </ul>
             </Grid>

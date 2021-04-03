@@ -29,3 +29,9 @@
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+.text-danger{
+  color:rgb(255, 51, 51);
+  font-weight: 500;
+  padding:5px;
+  margin-left:20px;
+}

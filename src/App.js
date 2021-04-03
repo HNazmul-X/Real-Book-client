@@ -13,7 +13,6 @@ function App() {
       <>
           <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
               <BrowserRouter>
-                  <MyNavbar/>
                   <MyRouter></MyRouter>
               </BrowserRouter>
           </UserContext.Provider>

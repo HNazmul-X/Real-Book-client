@@ -60,3 +60,31 @@ const signInWtihProvider = (provider) => {
              return errorUser;
          });
 }
+
+
+
+
+
+export const logOutUser = () => {
+   return firebase
+        .auth()
+        .signOut()
+        .then(() => {
+            const newUser = {
+                isLoggedIn: false,
+                displayName: "",
+                email:"",
+                photoURL: "",
+                succes: false,
+                error: "",
+            };
+
+            return newUser
+        })
+        .catch((error) => {
+             const errorMessage = error.message;
+             const newUser = {
+                 error: errorMessage,
+             };
+        });
+}

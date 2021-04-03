@@ -11,7 +11,7 @@ import { blueGrey } from "@material-ui/core/colors";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import axios from "axios";
-import { IconButton } from "@material-ui/core";
+import { Box, IconButton } from "@material-ui/core";
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles({
@@ -55,44 +55,50 @@ export default function ManageItem() {
 
     return (
         <>
-            {isSpinnerShow && <CircularProgress />}
-            {!isSpinnerShow && (
-                <TableContainer component={Paper}>
-                    <Table className={classes.table} aria-label="simple table">
-                        <TableHead>
-                            <TableRow>
-                                <TableCell>Books Name</TableCell>
-                                <TableCell align="right">Price</TableCell>
-                                <TableCell align="right">Catagory</TableCell>
-                                <TableCell align="right">Edit</TableCell>
-                                <TableCell align="right">Delete</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {books.map((book) => (
-                                <TableRow key={book.Name}>
-                                    <TableCell component="th" scope="row">
-                                        {book.Name || book.name}{" "}
-                                    </TableCell>
-                                    <TableCell align="right">{book.Price || book.price}</TableCell>
-                                    <TableCell align="right">{book.Catagory || book.catagory}</TableCell>
-                                    <TableCell align="right">
-                                        {" "}
-                                        <IconButton>
-                                            <EditIcon />
-                                        </IconButton>{" "}
-                                    </TableCell>
-                                    <TableCell align="right">
-                                        <IconButton onClick={() => deleteItemFromDb(book?._id)}>
-                                            <DeleteIcon />
-                                        </IconButton>
-                                    </TableCell>
+        <Box p={2} mb={3} bgcolor={blueGrey[300]}>
+            <h2 className="text-center">Mange Your Shop Product</h2>
+        </Box>
+
+            <Box p={4}> 
+                {isSpinnerShow && <CircularProgress />}
+                {!isSpinnerShow && (
+                    <TableContainer component={Paper}>
+                        <Table className={classes.table} aria-label="simple table">
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>Books Name</TableCell>
+                                    <TableCell align="right">Price</TableCell>
+                                    <TableCell align="right">Catagory</TableCell>
+                                    <TableCell align="right">Edit</TableCell>
+                                    <TableCell align="right">Delete</TableCell>
                                 </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
-            )}
+                            </TableHead>
+                            <TableBody>
+                                {books.map((book) => (
+                                    <TableRow key={book.Name}>
+                                        <TableCell component="th" scope="row">
+                                            {book.Name || book.name}{" "}
+                                        </TableCell>
+                                        <TableCell align="right">{book.Price || book.price}</TableCell>
+                                        <TableCell align="right">{book.Catagory || book.catagory}</TableCell>
+                                        <TableCell align="right">
+                                            {" "}
+                                            <IconButton>
+                                                <EditIcon />
+                                            </IconButton>{" "}
+                                        </TableCell>
+                                        <TableCell align="right">
+                                            <IconButton onClick={() => deleteItemFromDb(book?._id)}>
+                                                <DeleteIcon />
+                                            </IconButton>
+                                        </TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                )}
+            </Box>
         </>
     );
 }
