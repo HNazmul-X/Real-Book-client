@@ -1,5 +1,5 @@
 import { Box, Button, Grid, Typography } from '@material-ui/core';
-import { blueGrey, purple } from '@material-ui/core/colors';
+import { blueGrey, purple, red } from '@material-ui/core/colors';
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -44,7 +44,7 @@ const CheckOut = () => {
     return (
         <>
             <MyNavbar />
-            <Box bgcolor={purple[100]} width="450px" mx={"auto"} my={4} p={5}>
+            <Box elevation={8} bgcolor={red[400]} width="450px" mx={"auto"} my={4} p={5}>
                 <Box width="300px" height="300px" mx="auto" mb={2}>
                     <img style={{ width: "100%", height: "100%", objectFit: "contain" }} src={imageURL} alt="" />
                 </Box>
